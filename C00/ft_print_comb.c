@@ -1,35 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ide-oliv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/19 17:19:15 by ide-oliv          #+#    #+#             */
+/*   Updated: 2022/01/20 11:37:55 by ide-oliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 
 void	ft_print_comb(void)
 {
-	char i, j, k, firstTime = 'y';
-	
-	for (i = '0'; i <= '9'; i++)
+	char	i;
+	char	j;
+	char	k;
+	char	first_time;
+
+	first_time = 'y';
+	i = '0';
+	while (i <= '9')
 	{
-		for (j = i + 1; j <= '9'; j++)
+		j = i + 1;
+		while (j <= '9')
 		{
-			for (k = j+1; k <= '9'; k++)
+			k = j + 1;
+			while (k <= '9')
 			{
-				if (firstTime == 'y')
-				{
-					firstTime = 'n';
-				}
-				else 
-				{
+				if (first_time == 'y')
+					first_time = 'n';
+				else
 					write(1, ", ", 2);
-				}
 				write(1, &i, 1);
 				write(1, &j, 1);
 				write(1, &k, 1);
+				k++;
 			}
+			j++;
 		}
+		i++;
 	}
 }
 
-int main (void)
+int	main(void)
 {
-	ft_print_comb ();
-	return 0;
-	
+	ft_print_comb();
+	return (0);
 }
