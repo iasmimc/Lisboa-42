@@ -13,14 +13,23 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void	ft_print(char i, char j, char k)
+{
+	if (i != '0' || j != '1' || k != '2')
+	{
+		write(1, ", ", 2);
+	}
+	write(1, &i, 1);
+	write(1, &j, 1);
+	write(1, &k, 1);
+}
+
 void	ft_print_comb(void)
 {
 	char	i;
 	char	j;
 	char	k;
-	char	first_time;
 
-	first_time = 'y';
 	i = '0';
 	while (i <= '9')
 	{
@@ -30,13 +39,7 @@ void	ft_print_comb(void)
 			k = j + 1;
 			while (k <= '9')
 			{
-				if (first_time == 'y')
-					first_time = 'n';
-				else
-					write(1, ", ", 2);
-				write(1, &i, 1);
-				write(1, &j, 1);
-				write(1, &k, 1);
+				ft_print(i, j, k);
 				k++;
 			}
 			j++;
